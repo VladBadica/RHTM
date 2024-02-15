@@ -49,8 +49,9 @@ public class MainMenuTrackball : MonoBehaviour
 
             if (exitCollider.bounds.Intersects(trackBallCollider.bounds))
             {
-                Debug.Log("Exit");
+                Quit();
             }
+
         }
     }
 
@@ -67,5 +68,13 @@ public class MainMenuTrackball : MonoBehaviour
         {
             this.transform.position += new Vector3(speed * Time.fixedDeltaTime, 0, 0);
         }
+    }
+
+    void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
     }
 }
