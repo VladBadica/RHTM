@@ -506,7 +506,7 @@ MonoBehaviour:
   editorCollider: {fileID: 1386108581}
   playCollider: {fileID: 180084924}
   exitCollider: {fileID: 1366236303}
-  speed: 2
+  speed: 4
 --- !u!212 &1286595104
 SpriteRenderer:
   m_ObjectHideFlags: 0

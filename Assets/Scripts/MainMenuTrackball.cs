@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using RHTMGame.Utils;
@@ -9,45 +7,45 @@ public class MainMenuTrackball : MonoBehaviour
     public Collider2D editorCollider;
     public Collider2D playCollider;
     public Collider2D exitCollider;
-    private Collider2D trackBallCollider;
+    private Collider2D trackballCollider;
 
     public float speed;
 
-    private DirectionEnum direction;
+    private Direction direction;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        direction = DirectionEnum.LEFT;
-        trackBallCollider = GetComponent<Collider2D>();
+        direction = Direction.Left;
+        trackballCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(direction == DirectionEnum.LEFT && this.trackBallCollider.bounds.center.x < editorCollider.bounds.center.x)
+        if(direction == Direction.Left && this.trackballCollider.bounds.center.x < editorCollider.bounds.center.x)
         {
-            direction = DirectionEnum.RIGHT;
+            direction = Direction.Right;
         }
-        if (direction == DirectionEnum.RIGHT && this.trackBallCollider.bounds.center.x > exitCollider.bounds.center.x)
+        if (direction == Direction.Right && this.trackballCollider.bounds.center.x > exitCollider.bounds.center.x)
         {
-            direction = DirectionEnum.LEFT;
+            direction = Direction.Left;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (playCollider.bounds.Intersects(trackBallCollider.bounds))
+            if (playCollider.bounds.Intersects(trackballCollider.bounds))
             {
                 SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
             }
 
-            if (editorCollider.bounds.Intersects(trackBallCollider.bounds))
+            if (editorCollider.bounds.Intersects(trackballCollider.bounds))
             {
                 Debug.Log("Click Editor");
             }
 
-            if (exitCollider.bounds.Intersects(trackBallCollider.bounds))
+            if (exitCollider.bounds.Intersects(trackballCollider.bounds))
             {
                 Quit();
             }
@@ -59,12 +57,12 @@ public class MainMenuTrackball : MonoBehaviour
     // Update movement here
     void FixedUpdate()
     {
-        if (direction == DirectionEnum.LEFT)
+        if (direction == Direction.Left)
         {
             this.transform.position -= new Vector3(speed * Time.fixedDeltaTime, 0, 0);
         }
 
-        if (direction == DirectionEnum.RIGHT)
+        if (direction == Direction.Right)
         {
             this.transform.position += new Vector3(speed * Time.fixedDeltaTime, 0, 0);
         }
