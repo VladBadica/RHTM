@@ -21,20 +21,23 @@ public class Trackball : MonoBehaviour
     // Add logic here
     void Update()
     {
-        if (this.transform.position.x < -10)
-        {
-            Globals.Instance.ChangeTrackballDirection();
-        }
-        if (this.transform.position.x > 10)
-        {
-            Globals.Instance.TrackballDirection = Direction.Left;
-        }
+
     }
 
     // FixedUpdate is called fixed number of times per second
     // Update movement here
     void FixedUpdate()
     {
+        if (this.transform.position.x < -10)
+        {
+            Globals.Instance.ChangeTrackballDirection();
+        }
+
+        if (this.transform.position.x > 10)
+        {
+            Globals.Instance.ChangeTrackballDirection();
+        }
+
         if (Globals.Instance.TrackballDirection == Direction.Left)
         {
             this.transform.position -= new Vector3(horizontalForce * Time.fixedDeltaTime, 0, 0);

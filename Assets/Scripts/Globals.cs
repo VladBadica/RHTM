@@ -25,12 +25,21 @@ namespace RHTMGame.Utils
             {
                 TrackballDirection = Direction.Right;
             }
-
-            if (TrackballDirection == Direction.Right)
+            else if (TrackballDirection == Direction.Right)
             {
                 TrackballDirection = Direction.Left;
             }
         }
+    
+        public void QuitGame()
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+            Application.Quit();
+        }
+
+        public Map CurrentMap { get; set; }
     }
 }
 

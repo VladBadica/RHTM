@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using RHTMGame;
 using RHTMGame.Utils;
+using System.Collections.Generic;
+using System.IO;
 
 public class MainMenuTrackball : MonoBehaviour
 {
+    private List<Map> maps;
     public Collider2D editorCollider;
     public Collider2D playCollider;
     public Collider2D exitCollider;
@@ -17,6 +21,7 @@ public class MainMenuTrackball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maps = GetAllMaps();
         direction = Direction.Left;
         trackballCollider = GetComponent<Collider2D>();
     }
@@ -38,6 +43,7 @@ public class MainMenuTrackball : MonoBehaviour
             if (playCollider.bounds.Intersects(trackballCollider.bounds))
             {
                 SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+                Globals.Instance.CurrentMap = maps[0];
             }
 
             if (editorCollider.bounds.Intersects(trackballCollider.bounds))
@@ -47,7 +53,7 @@ public class MainMenuTrackball : MonoBehaviour
 
             if (exitCollider.bounds.Intersects(trackballCollider.bounds))
             {
-                Quit();
+                Globals.Instance.QuitGame();
             }
 
         }
@@ -68,11 +74,18 @@ public class MainMenuTrackball : MonoBehaviour
         }
     }
 
-    void Quit()
+    public List<Map> GetAllMaps()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-        Application.Quit();
+        List<Map> maps = new List<Map>();
+        string[] mapFiles = Directory.GetFiles($"{Directory.GetCurrentDirectory()}\\maps");
+        for (int i = 0; i < mapFiles.Length; i++)
+        {
+            Map map = JsonUtility.FromJson<Map>(File.ReadAllText(mapFiles[i]));
+            maps.Add(map);
+
+            mapFiles[i] = mapFiles[i].Split("\\")[^1].Split('.')[0];
+        }
+
+        return maps;
     }
 }
