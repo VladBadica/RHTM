@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using RHTMGame;
 using RHTMGame.Utils;
 
 public class MapEngine : MonoBehaviour
@@ -13,17 +10,26 @@ public class MapEngine : MonoBehaviour
     {
         Debug.Log(Globals.Instance.CurrentMap.MapName);
 
-
-        Globals.Instance.CurrentMap.Steps.ForEach(step =>
+        for(var i = 0; i < Globals.Instance.CurrentMap.Steps.Count; i++)
         {
+            var step = Globals.Instance.CurrentMap.Steps[i];
             Debug.Log(step.y);
-            if(prefab.TryGetComponent<Transform>(out var stepTransform))
+            if (prefab.TryGetComponent<Transform>(out var stepTransform))
             {
                 Debug.Log("Instantiate");
 
-                Instantiate(prefab, new Vector3(step.x, step.y, 0), stepTransform.rotation);
-            }           
-        });
+                var stepObj = Instantiate(prefab, new Vector3(step.x, step.y, 0), stepTransform.rotation);
+
+                if(stepObj.TryGetComponent<StepCollision>(out var stepCollision))
+                {
+                    stepCollision.StepNumber = i;
+                    if (i == 0)
+                    {
+                        stepCollision.enabled = true;
+                    }
+                }
+            }
+        }           
     }
 
 

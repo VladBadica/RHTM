@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RHTMGame.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RHTMGame
@@ -26,6 +27,25 @@ namespace RHTMGame
         public void NextStep()
         {
             CurrentIndex++;
+
+            var stepLines = GameObject.FindGameObjectsWithTag("StepLine");
+
+            foreach (var stepLine in stepLines)
+            {
+                if (stepLine.TryGetComponent<Transform>(out var stepTransform))
+                {
+                    stepTransform.position = new Vector3(stepTransform.position.x, stepTransform.position.y - 1, stepTransform.position.z);
+                }
+
+                if (stepLine.TryGetComponent<StepCollision>(out var stepCollision))
+                {
+                    if (stepCollision.StepNumber == Globals.Instance.CurrentMap.CurrentIndex)
+                    {
+                        stepCollision.enabled = true;
+                    }
+                }
+
+            }
         }
     }
 }

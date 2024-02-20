@@ -1,5 +1,7 @@
 using UnityEngine;
 using RHTMGame.Utils;
+using System.Linq;
+using UnityEngine.Rendering.RendererUtils;
 
 public class StepCollision : MonoBehaviour
 {
@@ -22,28 +24,22 @@ public class StepCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Globals.Instance.TrackballDirection == Direction.Left && StepCollider.bounds.min.x > TrackballCollider.bounds.max.x)
-        {
-            HandleExitCollision();
-        }
-        else if (Globals.Instance.TrackballDirection == Direction.Right && StepCollider.bounds.max.x < TrackballCollider.bounds.min.x)
+        if ((Globals.Instance.TrackballDirection == Direction.Left && StepCollider.bounds.min.x > TrackballCollider.bounds.max.x) ||
+            (Globals.Instance.TrackballDirection == Direction.Right && StepCollider.bounds.max.x < TrackballCollider.bounds.min.x))
         {
             HandleExitCollision();
         }
 
         if (StepCollider.bounds.Intersects(TrackballCollider.bounds))
         {
-            Debug.Log("hasCollided");
-            hasCollided = true;            
+            hasCollided = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
         {
-            Debug.Log(hasCollided);
             if (hasCollided)
             {
-                Debug.Log("HIT");
-                wasHit = true;
+                wasHit = true;               
             }
             else
             {
@@ -63,7 +59,12 @@ public class StepCollision : MonoBehaviour
         if (wasHit)
         {
             this.enabled = false;
-            Globals.Instance.ChangeTrackballDirection();
+            if(TryGetComponent<Renderer>(out var renderer))
+            {
+                renderer.enabled = false;
+            }
+            Globals.Instance.CurrentMap.NextStep();
+            Globals.Instance.ChangeTrackballDirection();            
         }
         else
         { 
