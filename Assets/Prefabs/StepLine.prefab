@@ -166,10 +166,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264271572444470768}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebb70b1a73e22104aa26176d6d1227de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ComboLabel: {fileID: 4210771905050974786, guid: 3d1137dcf6f180848b715fdf5f539fff, type: 3}
   StepCollider: {fileID: 9208350788866612418}
   StepNumber: 0

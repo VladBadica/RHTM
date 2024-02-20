@@ -40,6 +40,9 @@ namespace RHTMGame.Utils
         }
 
         public Map CurrentMap { get; set; }
+
+        private PerformanceTracker _performanceTracker = null;
+        public PerformanceTracker PerformanceTracker => _performanceTracker ??= new PerformanceTracker();
     }
 }
 

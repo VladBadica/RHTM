@@ -36,15 +36,6 @@ namespace RHTMGame
                 {
                     stepTransform.position = new Vector3(stepTransform.position.x, stepTransform.position.y - 1, stepTransform.position.z);
                 }
-
-                if (stepLine.TryGetComponent<StepCollision>(out var stepCollision))
-                {
-                    if (stepCollision.StepNumber == Globals.Instance.CurrentMap.CurrentIndex)
-                    {
-                        stepCollision.enabled = true;
-                    }
-                }
-
             }
         }
     }

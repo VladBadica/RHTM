@@ -1,74 +1,93 @@
 using UnityEngine;
 using RHTMGame.Utils;
-using System.Linq;
-using UnityEngine.Rendering.RendererUtils;
+using TMPro;
+using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class StepCollision : MonoBehaviour
 {
-    private BoxCollider2D TrackballCollider;
+    public GameObject ComboLabel;
     public Collider2D StepCollider;
     public int StepNumber = 0;
+    private BoxCollider2D TrackballCollider;
 
-    private bool hasCollided = false;
     private bool wasHit = false;
 
     // Start is called before the first frame update
     void Start()
     {
         TrackballCollider = GameObject.Find("Trackball").GetComponent<BoxCollider2D>();
-        hasCollided = false;
         wasHit = false;
     }
-
 
     // Update is called once per frame
     void Update()
     {
+        if(StepNumber != Globals.Instance.CurrentMap.CurrentIndex)
+        {
+            return;
+        }   
+
         if ((Globals.Instance.TrackballDirection == Direction.Left && StepCollider.bounds.min.x > TrackballCollider.bounds.max.x) ||
             (Globals.Instance.TrackballDirection == Direction.Right && StepCollider.bounds.max.x < TrackballCollider.bounds.min.x))
         {
             HandleExitCollision();
         }
 
-        if (StepCollider.bounds.Intersects(TrackballCollider.bounds))
-        {
-            hasCollided = true;
-        }
-
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
         {
-            if (hasCollided)
+            if (StepCollider.bounds.Intersects(TrackballCollider.bounds))
             {
-                wasHit = true;               
+                OnStepHit();
             }
             else
             {
                 Globals.Instance.QuitGame();
-            }
-           
+            }           
         }
     }
 
     public void HandleExitCollision()
     {
-        if (!hasCollided)
-        {
-            return;
-        }
-
         if (wasHit)
         {
-            this.enabled = false;
             if(TryGetComponent<Renderer>(out var renderer))
             {
                 renderer.enabled = false;
             }
+            Globals.Instance.ChangeTrackballDirection();
             Globals.Instance.CurrentMap.NextStep();
-            Globals.Instance.ChangeTrackballDirection();            
+
+            
         }
         else
         { 
             Globals.Instance.QuitGame();
+        }
+    }
+
+    public void OnStepHit()
+    {
+        wasHit = true;
+        Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
+
+        if (GameObject.Find("ScoreLabel").TryGetComponent<TextMeshProUGUI>(out var scoreLabel))
+        {
+            scoreLabel.text = $"Score: {Globals.Instance.PerformanceTracker.Score}";
+        }
+
+        if (GameObject.Find("AccuracyLabel").TryGetComponent<TextMeshProUGUI>(out var accuracyLabel))
+        {
+            accuracyLabel.text = $"Accuracy: {Globals.Instance.PerformanceTracker.Accuracy}%";
+        }
+
+        var canvas = GameObject.Find("UICanvas");
+        var comboLabelObj = Instantiate(ComboLabel, canvas.transform.position, Quaternion.identity);
+        comboLabelObj.transform.SetParent(canvas.transform);
+        
+        if(comboLabelObj.TryGetComponent<TextMeshProUGUI>(out var comboLabelText))
+        {
+            comboLabelText.text = Globals.Instance.PerformanceTracker.GetLastHitInfoLabel();
         }
     }
 }
