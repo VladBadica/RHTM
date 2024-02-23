@@ -34,7 +34,7 @@ namespace RHTMGame
             {
                 if (stepLine.TryGetComponent<Transform>(out var stepTransform))
                 {
-                    stepTransform.position = new Vector3(stepTransform.position.x, stepTransform.position.y - 1, stepTransform.position.z);
+                    stepTransform.position = new Vector3(stepTransform.position.x, stepTransform.position.y - stepTransform.localScale.y, stepTransform.position.z);
                 }
             }
         }
