@@ -39,6 +39,8 @@ namespace RHTMGame.Utils
             Application.Quit();
         }
 
+        public List<Map> AllMaps { get; set; }
+
         public Map CurrentMap { get; set; }
 
         private PerformanceTracker _performanceTracker = null;

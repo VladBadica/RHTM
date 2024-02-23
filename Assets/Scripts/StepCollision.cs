@@ -1,16 +1,16 @@
 using UnityEngine;
 using RHTMGame.Utils;
 using TMPro;
-using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class StepCollision : MonoBehaviour
 {
+    public AudioClip GameOverClip;
+    public AudioClip StepHitClip;
     public GameObject ComboLabel;
     public Collider2D StepCollider;
     public int StepNumber = 0;
-    private BoxCollider2D TrackballCollider;
 
+    private BoxCollider2D TrackballCollider;
     private bool wasHit = false;
 
     // Start is called before the first frame update
@@ -57,11 +57,10 @@ public class StepCollision : MonoBehaviour
             }
             Globals.Instance.ChangeTrackballDirection();
             Globals.Instance.CurrentMap.NextStep();
-
-            
         }
         else
-        { 
+        {
+            AudioSource.PlayClipAtPoint(GameOverClip, Vector3.zero, 1f);
             Globals.Instance.QuitGame();
         }
     }
@@ -69,21 +68,22 @@ public class StepCollision : MonoBehaviour
     public void OnStepHit()
     {
         wasHit = true;
+
+        AudioSource.PlayClipAtPoint(StepHitClip, Vector3.zero, 1f);
+
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
 
         if (GameObject.Find("ScoreLabel").TryGetComponent<TextMeshProUGUI>(out var scoreLabel))
         {
             scoreLabel.text = $"Score: {Globals.Instance.PerformanceTracker.Score}";
         }
-
         if (GameObject.Find("AccuracyLabel").TryGetComponent<TextMeshProUGUI>(out var accuracyLabel))
         {
             accuracyLabel.text = $"Accuracy: {Globals.Instance.PerformanceTracker.Accuracy}%";
         }
 
         var canvas = GameObject.Find("UICanvas");
-        var comboLabelObj = Instantiate(ComboLabel, canvas.transform.position, Quaternion.identity);
-        comboLabelObj.transform.SetParent(canvas.transform);
+        var comboLabelObj = Instantiate(ComboLabel, canvas.transform.position, Quaternion.identity, canvas.transform);
         
         if(comboLabelObj.TryGetComponent<TextMeshProUGUI>(out var comboLabelText))
         {

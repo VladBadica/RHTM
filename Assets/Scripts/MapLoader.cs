@@ -1,5 +1,8 @@
 using UnityEngine;
 using RHTMGame.Utils;
+using UnityEngine.Networking;
+using System.IO;
+using System.Collections;
 
 public class MapLoader : MonoBehaviour
 {
@@ -16,6 +19,11 @@ public class MapLoader : MonoBehaviour
             Destroy(stepLine);
         }
 
+        //UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip($"file:///Songs/{Globals.Instance.CurrentMap.SongFile}", AudioType.MPEG);
+        //yield return req.SendWebRequest();
+        //var song = DownloadHandlerAudioClip.GetContent(req);
+        //AudioSource.PlayClipAtPoint(song, Vector3.zero, 1f);
+
         for (var i = 0; i < Globals.Instance.CurrentMap.Steps.Count; i++)
         {
             var step = Globals.Instance.CurrentMap.Steps[i];
@@ -29,5 +37,22 @@ public class MapLoader : MonoBehaviour
                 }
             }
         }           
+    }
+
+    IEnumerator GetAudioClip(string path)
+    {
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.MPEG))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
+            }
+        }
     }
 }

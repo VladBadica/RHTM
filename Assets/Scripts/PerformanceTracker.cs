@@ -54,8 +54,6 @@ public class PerformanceTracker
 
     public void AddHitAccuracy(Bounds trackballBounds, Bounds stepBounds)
     {
-        Debug.Log(trackballBounds.center.x);
-        Debug.Log(stepBounds.center.x);
         var value = (trackballBounds.extents.x - Math.Abs(trackballBounds.center.x - stepBounds.center.x)) * 100 / trackballBounds.extents.x;
 
         if (value > 75)
