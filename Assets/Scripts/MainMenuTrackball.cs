@@ -7,7 +7,7 @@ using System.IO;
 
 public class MainMenuTrackball : MonoBehaviour
 {
-    public Collider2D editorCollider;
+    public Collider2D optionsCollider;
     public Collider2D playCollider;
     public Collider2D exitCollider;
     private Collider2D trackballCollider;
@@ -27,7 +27,7 @@ public class MainMenuTrackball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(direction == Direction.Left && trackballCollider.bounds.center.x < editorCollider.bounds.center.x)
+        if(direction == Direction.Left && trackballCollider.bounds.center.x < optionsCollider.bounds.center.x)
         {
             direction = Direction.Right;
         }
@@ -40,13 +40,13 @@ public class MainMenuTrackball : MonoBehaviour
         {
             if (playCollider.bounds.Intersects(trackballCollider.bounds))
             {
-                SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+                SceneManager.LoadScene("GameScene");
                 Globals.Instance.CurrentMap = Globals.Instance.AllMaps[0];
             }
 
-            if (editorCollider.bounds.Intersects(trackballCollider.bounds))
+            if (optionsCollider.bounds.Intersects(trackballCollider.bounds))
             {
-                Debug.Log("Click Editor");
+                SceneManager.LoadScene("Options");
             }
 
             if (exitCollider.bounds.Intersects(trackballCollider.bounds))

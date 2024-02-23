@@ -45,6 +45,61 @@ namespace RHTMGame.Utils
 
         private PerformanceTracker _performanceTracker = null;
         public PerformanceTracker PerformanceTracker => _performanceTracker ??= new PerformanceTracker();
+        public float RawMusicVolume
+        {
+            get
+            {
+                return PlayerPrefs.HasKey("MusicVolume") ? PlayerPrefs.GetFloat("MusicVolume") : 1f;
+            }
+            set
+            {
+                PlayerPrefs.SetFloat("MusicVolume", value);
+            }
+        }
+
+        public float RawSoundEffectsVolume
+        {
+            get
+            {
+                return PlayerPrefs.HasKey("SoundEffectsVolume") ? PlayerPrefs.GetFloat("SoundEffectsVolume") : 1f;
+            }
+            set
+            {
+                PlayerPrefs.SetFloat("SoundEffectsVolume", value);
+            }
+        }
+
+        public float MusicVolume
+        {
+            get
+            {
+                var game = PlayerPrefs.HasKey("GameVolume") ? PlayerPrefs.GetFloat("GameVolume") : 1f;
+
+                return RawMusicVolume * game;
+            }
+        }
+
+        public float SoundEffectsVolume
+        {
+            get
+            {
+                var game = PlayerPrefs.HasKey("GameVolume") ? PlayerPrefs.GetFloat("GameVolume") : 1f;
+
+                return RawSoundEffectsVolume * game;
+            }
+        }
+
+        public float GameVolume
+        {
+            get
+            {
+                return PlayerPrefs.HasKey("GameVolume") ? PlayerPrefs.GetFloat("GameVolume") : 1f;
+            }
+            set
+            {
+                PlayerPrefs.SetFloat("GameVolume", value);
+            }
+        }
     }
 }
 

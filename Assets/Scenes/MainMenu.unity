@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 1386108579}
   - component: {fileID: 1386108581}
   m_Layer: 0
-  m_Name: EditorSquare
+  m_Name: OptionsSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 1449343250}
   - component: {fileID: 1449343249}
   m_Layer: 5
-  m_Name: EditorLabel
+  m_Name: OptionsLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EDITOR
+  m_text: OPTIONS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c877c55053fa67d4e835adef511992e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorCollider: {fileID: 1386108581}
+  optionsCollider: {fileID: 1386108581}
   playCollider: {fileID: 180084924}
   exitCollider: {fileID: 1366236303}
   speed: 4
@@ -1263,7 +1263,6 @@ GameObject:
   - component: {fileID: 1853790225}
   - component: {fileID: 1853790224}
   - component: {fileID: 1853790223}
-  - component: {fileID: 1853790226}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1345,18 +1344,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1853790226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853790222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2011929e9108ab44d9987a1c823cc77e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2049393370
 GameObject:
   m_ObjectHideFlags: 0

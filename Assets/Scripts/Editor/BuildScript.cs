@@ -4,7 +4,7 @@ using System.IO;
 
 public class BuildScript
 {
-    static string[] scenes = { "Assets/Scenes/MainMenu.unity", "Assets/Scenes/GameScene.unity" };
+    static string[] scenes = { "Assets/Scenes/MainMenu.unity", "Assets/Scenes/Options.unity", "Assets/Scenes/GameScene.unity" };
     static string buildPath = "./Builds/";
     static string name = "RHTM.exe";
 

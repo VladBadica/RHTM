@@ -17,7 +17,7 @@ public class MapLoader : MonoBehaviour
         }
 
         var song = Resources.Load<AudioClip>($"Songs/{Globals.Instance.CurrentMap.SongFile}");
-        AudioSource.PlayClipAtPoint(song, Vector3.zero, 1f);
+        AudioSource.PlayClipAtPoint(song, Vector3.zero, Globals.Instance.MusicVolume);
 
         for (var i = 0; i < Globals.Instance.CurrentMap.Steps.Count; i++)
         {
