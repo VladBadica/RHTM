@@ -45,6 +45,7 @@ namespace RHTMGame.Utils
 
         private PerformanceTracker _performanceTracker = null;
         public PerformanceTracker PerformanceTracker => _performanceTracker ??= new PerformanceTracker();
+
         public float RawMusicVolume
         {
             get
@@ -57,7 +58,7 @@ namespace RHTMGame.Utils
             }
         }
 
-        public float RawSoundEffectsVolume
+        public float RawEffectsVolume
         {
             get
             {
@@ -79,13 +80,13 @@ namespace RHTMGame.Utils
             }
         }
 
-        public float SoundEffectsVolume
+        public float EffectsVolume
         {
             get
             {
                 var game = PlayerPrefs.HasKey("GameVolume") ? PlayerPrefs.GetFloat("GameVolume") : 1f;
 
-                return RawSoundEffectsVolume * game;
+                return RawEffectsVolume * game;
             }
         }
 

@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="Header" style="align-items: center; margin-top: 5%;">
+            <ui:Label tabindex="-1" text="OPTIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionsLabel" style="font-size: 48px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Body" style="flex-grow: 1; padding-top: 5%; padding-right: 20%; padding-bottom: 15px; padding-left: 20%;">
+            <ui:Slider label="General" high-value="1" name="GeneralVolume" inverted="false" style="font-size: 26px;" />
+            <ui:Slider label="Music" high-value="1" name="MusicVolume" style="font-size: 26px;" />
+            <ui:Slider label="Effects" high-value="1" name="EffectsVolume" style="font-size: 26px; -unity-text-align: upper-left; white-space: normal; text-overflow: clip; justify-content: flex-start; align-items: stretch; align-self: auto;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" style="align-self: auto; justify-content: flex-start; align-items: flex-end; padding-right: 40px; padding-bottom: 40px; padding-top: 15px; margin-bottom: 0;">
+            <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonBack" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(149, 149, 149); border-right-color: rgb(149, 149, 149); border-top-color: rgb(149, 149, 149); border-bottom-color: rgb(149, 149, 149); background-color: rgba(188, 188, 188, 0); -unity-font-style: bold; font-size: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

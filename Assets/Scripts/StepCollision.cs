@@ -69,7 +69,7 @@ public class StepCollision : MonoBehaviour
     {
         wasHit = true;
 
-        AudioSource.PlayClipAtPoint(StepHitClip, Vector3.zero, Globals.Instance.SoundEffectsVolume);
+        AudioSource.PlayClipAtPoint(StepHitClip, Vector3.zero, Globals.Instance.EffectsVolume);
 
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
 
