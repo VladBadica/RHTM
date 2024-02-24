@@ -73,21 +73,11 @@ public class StepCollision : MonoBehaviour
 
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
 
-        if (GameObject.Find("ScoreLabel").TryGetComponent<TextMeshProUGUI>(out var scoreLabel))
+        if(GameObject.Find("UIDocument").TryGetComponent<GameUI>(out var gameUIScript)) 
         {
-            scoreLabel.text = $"Score: {Globals.Instance.PerformanceTracker.Score}";
-        }
-        if (GameObject.Find("AccuracyLabel").TryGetComponent<TextMeshProUGUI>(out var accuracyLabel))
-        {
-            accuracyLabel.text = $"Accuracy: {Globals.Instance.PerformanceTracker.Accuracy}%";
-        }
-
-        var canvas = GameObject.Find("UICanvas");
-        var comboLabelObj = Instantiate(ComboLabel, canvas.transform.position, Quaternion.identity, canvas.transform);
-        
-        if(comboLabelObj.TryGetComponent<TextMeshProUGUI>(out var comboLabelText))
-        {
-            comboLabelText.text = Globals.Instance.PerformanceTracker.GetLastHitInfoLabel();
+            gameUIScript.CreateComboLabel(Globals.Instance.PerformanceTracker.GetLastHitInfoLabel());
+            gameUIScript.UpdateAccuracy(Globals.Instance.PerformanceTracker.Accuracy);
+            gameUIScript.UpdateScore(Globals.Instance.PerformanceTracker.Score.ToString());
         }
     }
 }
