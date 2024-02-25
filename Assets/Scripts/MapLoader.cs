@@ -16,9 +16,7 @@ public class MapLoader : MonoBehaviour
             Destroy(stepLine);
         }
 
-        var song = Resources.Load<AudioClip>($"Songs/{Globals.Instance.CurrentMap.SongFile}");
-        AudioSource.PlayClipAtPoint(song, Vector3.zero, Globals.Instance.MusicVolume);
-
+        AudioManager.Instance.Play(Globals.Instance.CurrentMap.SongFile);
         for (var i = 0; i < Globals.Instance.CurrentMap.Steps.Count; i++)
         {
             var step = Globals.Instance.CurrentMap.Steps[i];

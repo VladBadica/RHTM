@@ -1,9 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UiToolkit/Stylesheet.uss?fileID=7433441132597879392&amp;guid=033c8c38727493c43ae6931514ae43df&amp;type=3#Stylesheet" />
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:VisualElement name="Header" style="align-items: center; margin-top: 5%;">
+        <ui:VisualElement name="Header" class="header" style="align-items: center; margin-top: 5%;">
             <ui:Label tabindex="-1" text="OPTIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionsLabel" style="font-size: 48px; -unity-font-style: bold;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Body" style="flex-grow: 1; padding-top: 5%; padding-right: 20%; padding-bottom: 15px; padding-left: 20%;">
+        <ui:VisualElement name="Body" style="flex-grow: 1; padding-top: 5%; padding-right: 20%; padding-bottom: 15px; padding-left: 20%; flex-direction: column;">
             <ui:Slider label="General" high-value="1" name="GeneralVolume" inverted="false" style="font-size: 26px;" />
             <ui:Slider label="Music" high-value="1" name="MusicVolume" style="font-size: 26px;" />
             <ui:Slider label="Effects" high-value="1" name="EffectsVolume" style="font-size: 26px; -unity-text-align: upper-left; white-space: normal; text-overflow: clip; justify-content: flex-start; align-items: stretch; align-self: auto;" />

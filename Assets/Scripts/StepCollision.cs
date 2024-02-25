@@ -1,6 +1,5 @@
 using UnityEngine;
 using RHTMGame.Utils;
-using TMPro;
 
 public class StepCollision : MonoBehaviour
 {
@@ -60,7 +59,7 @@ public class StepCollision : MonoBehaviour
         }
         else
         {
-            AudioSource.PlayClipAtPoint(GameOverClip, Vector3.zero, 1f);
+            AudioManager.Instance.Play("gameOver");
             Globals.Instance.QuitGame();
         }
     }
@@ -69,8 +68,7 @@ public class StepCollision : MonoBehaviour
     {
         wasHit = true;
 
-        AudioSource.PlayClipAtPoint(StepHitClip, Vector3.zero, Globals.Instance.EffectsVolume);
-
+        AudioManager.Instance.Play("stepHit");
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
 
         if(GameObject.Find("UIDocument").TryGetComponent<GameUI>(out var gameUIScript)) 

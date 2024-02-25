@@ -3,3 +3,16 @@
     color: rgb(255, 255, 255);
     -unity-font-style: bold;
 }
+
+.header {
+    font-size: 48px;
+    -unity-font-style: bold;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.header.headerLabel {
+    font-size: 48px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}

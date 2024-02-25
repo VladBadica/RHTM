@@ -22,6 +22,8 @@ public class MainMenuTrackball : MonoBehaviour
     {
         direction = Direction.Left;
         trackballCollider = GetComponent<Collider2D>();
+
+        AudioManager.Instance.Play("mainMenu");
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class MainMenuTrackball : MonoBehaviour
             {
                 SceneManager.LoadScene("Game");
                 Globals.Instance.CurrentMap = Globals.Instance.AllMaps[0];
+                AudioManager.Instance.Stop("mainMenu");
             }
 
             if (optionsCollider.bounds.Intersects(trackballCollider.bounds))

@@ -16,7 +16,6 @@ namespace RHTMGame.Utils
         private static Globals _globals = null;
         public static Globals Instance => _globals ??= new Globals();
 
-
         public Direction TrackballDirection { get; set; }
 
         public void ChangeTrackballDirection()
