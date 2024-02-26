@@ -16,3 +16,16 @@
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
 }
+
+.pauseMenuButton {
+    font-size: 42px;
+    margin-bottom: 15px;
+    background-color: rgba(188, 188, 188, 0.5);
+    color: rgba(27, 27, 27, 0.78);
+}
+
+.pauseMenuButton:hover {
+    margin-bottom: 15px;
+    background-color: rgb(188, 188, 188);
+    color: rgb(27, 27, 27);
+}

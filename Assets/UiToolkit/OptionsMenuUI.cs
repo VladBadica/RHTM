@@ -16,7 +16,6 @@ public class OptionsMenuUI : MonoBehaviour
         var sliderMusicVolume = root.Q<Slider>("MusicVolume");
         var sliderEffectsVolume = root.Q<Slider>("EffectsVolume");
 
-        Debug.Log(Globals.Instance.GameVolume);
         sliderGeneralVolume.value = Globals.Instance.GameVolume;
         sliderMusicVolume.value = Globals.Instance.RawMusicVolume;
         sliderEffectsVolume.value = Globals.Instance.RawEffectsVolume;
