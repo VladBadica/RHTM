@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using RHTMGame;
+using RHTMGame.Utils;
 
 public class AudioManager : MonoBehaviour
 {
@@ -80,6 +80,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        s.source.volume *= Globals.Instance.MusicVolume;
         s.source.Play();
     }
 
@@ -92,6 +93,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        s.source.volume *= Globals.Instance.EffectsVolume;
         s.source.Play();
     }
 
@@ -130,4 +132,15 @@ public class AudioManager : MonoBehaviour
 
         s.source.Stop();
     }
+}
+
+public class Sound
+{
+    public string name;
+    public AudioClip clip;
+    public float volume;
+    public float pitch;
+    public bool loop;
+
+    public AudioSource source;
 }

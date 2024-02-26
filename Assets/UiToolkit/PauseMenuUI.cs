@@ -29,6 +29,11 @@ public class PauseMenuUI : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         AudioManager.Instance.Resume(Globals.Instance.CurrentMap.SongFile);
+
+        foreach (var script in FindObjectsByType<StepCollision>(FindObjectsSortMode.None))
+        {
+            script.enabled = true;
+        }
     }
 
     void Pause()
@@ -37,5 +42,10 @@ public class PauseMenuUI : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         AudioManager.Instance.Pause(Globals.Instance.CurrentMap.SongFile);
+        
+        foreach(var script in FindObjectsByType<StepCollision>(FindObjectsSortMode.None))
+        {
+            script.enabled = false;
+        }
     }
 }

@@ -3,9 +3,6 @@ using RHTMGame.Utils;
 
 public class StepCollision : MonoBehaviour
 {
-    public AudioClip GameOverClip;
-    public AudioClip StepHitClip;
-    public GameObject ComboLabel;
     public Collider2D StepCollider;
     public int StepNumber = 0;
 
