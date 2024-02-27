@@ -1,7 +1,8 @@
 .label {
-    font-size: 24px;
+    font-size: 48px;
     color: rgb(255, 255, 255);
     -unity-font-style: bold;
+    -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');
 }
 
 .header {
@@ -9,12 +10,14 @@
     -unity-font-style: bold;
     align-items: center;
     margin-top: 5%;
+    -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');
 }
 
 .header.headerLabel {
     font-size: 48px;
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');
 }
 
 .pauseMenuButton {
@@ -22,10 +25,12 @@
     margin-bottom: 15px;
     background-color: rgba(188, 188, 188, 0.5);
     color: rgba(27, 27, 27, 0.78);
+    -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');
 }
 
 .pauseMenuButton:hover {
     margin-bottom: 15px;
     background-color: rgb(188, 188, 188);
     color: rgb(27, 27, 27);
+    -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');
 }

@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.volume *= Globals.Instance.MusicVolume;
+        s.source.volume = s.volume * Globals.Instance.MusicVolume;
         s.source.Play();
     }
 
@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        s.source.volume *= Globals.Instance.EffectsVolume;
+        s.source.volume = s.volume * Globals.Instance.EffectsVolume;
         s.source.Play();
     }
 

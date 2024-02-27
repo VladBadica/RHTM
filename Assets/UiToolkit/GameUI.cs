@@ -17,8 +17,8 @@ public class GameUI : MonoBehaviour
         labelScore = root.Q<Label>("LabelScore");
         labelAccuracy = root.Q<Label>("LabelAccuracy");
 
-        labelScore.text = "Score: " + Globals.Instance.PerformanceTracker.Score;
-        labelAccuracy.text = "Accuracy: " + Globals.Instance.PerformanceTracker.Accuracy;
+        labelScore.text = Globals.Instance.PerformanceTracker.Score.ToString();
+        labelAccuracy.text = Globals.Instance.PerformanceTracker.Accuracy + "%";
     }
 
     public void CreateComboLabel(string text)
@@ -42,11 +42,11 @@ public class GameUI : MonoBehaviour
 
     public void UpdateScore(string text)
     {
-        labelScore.text = "Score: " + text;
+        labelScore.text = text;
     }
 
     public void UpdateAccuracy(string text)
     {
-        labelAccuracy.text = "Accuracy: " + text;
+        labelAccuracy.text = text + "%";
     }
 }
