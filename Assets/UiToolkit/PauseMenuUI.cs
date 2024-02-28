@@ -1,5 +1,6 @@
 using RHTMGame.Utils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PauseMenuUI : MonoBehaviour
@@ -63,13 +64,30 @@ public class PauseMenuUI : MonoBehaviour
             script.enabled = true;
         }
     }
+
     void Retry()
     {
-        Debug.LogWarning("Retry not implemented yet");
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        pauseMenuUI.enabled = false;
+
+        AudioManager.Instance.Stop(Globals.Instance.CurrentMap.SongFile);
+        foreach (var script in FindObjectsByType<StepCollision>(FindObjectsSortMode.None))
+        {
+            script.enabled = true;
+        }
+
+        SceneManager.LoadScene("Game");
+        // BUGGED
     }
 
     void GoToMainMenu()
     {
-        Debug.LogWarning("Back to main menu not implemented yet");
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        pauseMenuUI.enabled = false;
+        AudioManager.Instance.Stop(Globals.Instance.CurrentMap.SongFile);
+
+        SceneManager.LoadScene("MainMenu");
     }
 }
