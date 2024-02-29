@@ -4,7 +4,12 @@
         <ui:VisualElement name="Header" class="header" style="flex-grow: 0; align-items: center;">
             <ui:Label tabindex="-1" text="Track" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelHeader" class="headerLabel" />
         </ui:VisualElement>
-        <ui:VisualElement name="Body" style="flex-grow: 1;" />
+        <ui:VisualElement name="Body" style="flex-grow: 1;">
+            <ui:VisualElement style="flex-grow: 1; padding-left: 30px;">
+                <ui:Label tabindex="-1" text="Score:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelScore" class="label" />
+                <ui:Label tabindex="-1" text="Accuracy: " parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelAccuracy" class="label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement name="Footer" style="flex-grow: 0; flex-direction: row; justify-content: space-between; margin-top: 25px; margin-right: 25px; margin-bottom: 25px; margin-left: 25px;">
             <ui:Button text="Retry" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonRetry" class="button" style="font-size: 48px; padding-top: 20px; padding-bottom: 20px; padding-right: 24px; padding-left: 24px;" />
             <ui:VisualElement style="flex-grow: 0; justify-content: center;">

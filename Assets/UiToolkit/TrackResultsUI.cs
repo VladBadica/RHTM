@@ -1,3 +1,4 @@
+using RHTMGame.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -17,18 +18,16 @@ public class TrackResultsUI : MonoBehaviour
         var buttonRetry = root.Q<Button>("ButtonRetry");
         buttonRetry.clicked += () => Retry();
 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void ShowTrackResults()
-    {
-        trackResultsUI.enabled = true;
         var labelHeader = root.Q<Label>("LabelHeader");
         labelHeader.text = $"Track Finished";
+
+        var labelScore = root.Q<Label>("LabelScore");
+        labelScore.text = $"Score: {Globals.Instance.PerformanceTracker.Score}";
+
+        var labelAccuracy = root.Q<Label>("LabelAccuracy");
+        labelAccuracy.text = $"Accuracy: {Globals.Instance.PerformanceTracker.Accuracy}%";
+
     }
 
     void GoBack()
