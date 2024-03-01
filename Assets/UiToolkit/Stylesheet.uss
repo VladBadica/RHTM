@@ -1,5 +1,5 @@
 .label {
-    font-size: 48px;
+    font-size: 30px;
     color: rgb(255, 255, 255);
     -unity-font-style: bold;
     -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');

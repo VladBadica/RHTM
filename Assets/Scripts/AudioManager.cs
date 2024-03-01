@@ -132,6 +132,18 @@ public class AudioManager : MonoBehaviour
 
         s.source.Stop();
     }
+
+    public string SongDuration(string name)
+    {
+        var s = sounds.Find(s => s.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning($"Sound {name} not found");
+            return "";
+        }
+
+        return $"{(int)s.clip.length / 60}m {(int)s.clip.length % 60}s";
+    }
 }
 
 public class Sound

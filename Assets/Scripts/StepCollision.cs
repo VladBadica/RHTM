@@ -88,6 +88,7 @@ public class StepCollision : MonoBehaviour
             AudioManager.Instance.Play("gameOver");
         }
 
+        Globals.Instance.TrackCompleted = trackCompleted;
         AudioManager.Instance.Stop(Globals.Instance.CurrentMap.SongFile);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

@@ -10,6 +10,7 @@ public class MapLoader : MonoBehaviour
     {
         Globals.Instance.PerformanceTracker.Reset();
         Globals.Instance.CurrentMap.Reset();
+        Globals.Instance.TrackCompleted = false;
 
         var stepLines = GameObject.FindGameObjectsWithTag("StepLine");
         foreach (var stepLine in stepLines)
