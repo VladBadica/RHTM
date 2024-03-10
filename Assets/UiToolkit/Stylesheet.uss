@@ -41,6 +41,7 @@
 }
 
 .button {
+    color: rgb(255, 255, 255);
     -unity-font-definition: url('project://database/Assets/Thaleah_PixelFont/Materials/ThaleahFat_TTF%20SDF.asset?fileID=11400000&guid=8f39352d7459cb744a555761477efa96&type=2#ThaleahFat_TTF SDF');
     -unity-font: url('project://database/Assets/Thaleah_PixelFont/ThaleahFat.fontsettings?fileID=12800000&guid=652f7165b7c30ab46af6c4aad90a639b&type=2#ThaleahFat');
 }

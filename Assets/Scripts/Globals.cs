@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace RHTMGame.Utils
 {
@@ -100,6 +101,29 @@ namespace RHTMGame.Utils
             set
             {
                 PlayerPrefs.SetFloat("GameVolume", value);
+            }
+        }
+
+
+        public KeyCode Action1 {
+            get
+            {
+                return PlayerPrefs.HasKey("Action1Key") ? (KeyCode) Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Action1Key"), true) : KeyCode.Z;
+            }
+            set
+            {
+                PlayerPrefs.SetString("Action1Key", value.ToString());
+            }
+        }
+        public KeyCode Action2
+        {
+            get
+            {
+                return PlayerPrefs.HasKey("Action2Key") ? (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Action2Key"), true) : KeyCode.X;
+            }
+            set
+            {
+                PlayerPrefs.SetString("Action2Key", value.ToString());
             }
         }
     }
