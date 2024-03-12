@@ -105,7 +105,7 @@ namespace RHTMGame.Utils
         }
 
 
-        public KeyCode Action1 {
+        public KeyCode Action1Key {
             get
             {
                 return PlayerPrefs.HasKey("Action1Key") ? (KeyCode) Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Action1Key"), true) : KeyCode.Z;
@@ -115,7 +115,7 @@ namespace RHTMGame.Utils
                 PlayerPrefs.SetString("Action1Key", value.ToString());
             }
         }
-        public KeyCode Action2
+        public KeyCode Action2Key
         {
             get
             {

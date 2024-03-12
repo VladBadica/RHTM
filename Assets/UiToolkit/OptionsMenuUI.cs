@@ -50,9 +50,9 @@ public class OptionsMenuUI : MonoBehaviour
         });
 
         labelAction1 = root.Q<Label>("LabelAction1Key");
-        labelAction1.text = Globals.Instance.Action1.ToString();
+        labelAction1.text = Globals.Instance.Action1Key.ToString();
         labelAction2 = root.Q<Label>("LabelAction2Key");
-        labelAction2.text = Globals.Instance.Action2.ToString();
+        labelAction2.text = Globals.Instance.Action2Key.ToString();
     }
 
     private void GoBack()
@@ -89,15 +89,15 @@ public class OptionsMenuUI : MonoBehaviour
             {
                 if (isChangingAction1)
                 {
-                    Globals.Instance.Action1 = Event.current.keyCode;
-                    labelAction1.text = Globals.Instance.Action1.ToString();
+                    Globals.Instance.Action1Key = Event.current.keyCode;
+                    labelAction1.text = Globals.Instance.Action1Key.ToString();
                     isChangingAction1 = false;
                 }
 
                 if (isChangingAction2)
                 {
-                    Globals.Instance.Action2 = Event.current.keyCode;
-                    labelAction2.text = Globals.Instance.Action2.ToString();
+                    Globals.Instance.Action2Key = Event.current.keyCode;
+                    labelAction2.text = Globals.Instance.Action2Key.ToString();
                     isChangingAction2 = false;
                 }
             }

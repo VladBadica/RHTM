@@ -31,7 +31,7 @@ public class StepCollision : MonoBehaviour
             HandleExitCollision();
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(Globals.Instance.Action1Key) || Input.GetKeyDown(Globals.Instance.Action2Key))
         {
             if (StepCollider.bounds.Intersects(TrackballCollider.bounds))
             {
@@ -65,6 +65,10 @@ public class StepCollision : MonoBehaviour
     {
         wasHit = true;
 
+        if(GameObject.Find("Main Camera").TryGetComponent<CameraShake>(out var cameraShake))
+        {
+            StartCoroutine(cameraShake.Shake(0.15f));
+        }
         AudioManager.Instance.Play("stepHit");
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
 
