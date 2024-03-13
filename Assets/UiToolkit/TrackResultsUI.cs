@@ -17,10 +17,7 @@ public class TrackResultsUI : MonoBehaviour
 
         var buttonRetry = root.Q<Button>("ButtonRetry");
         buttonRetry.clicked += () => Retry();
-    }
 
-    public void ShowTrackResults()
-    {
         var labelHeader = root.Q<Label>("LabelHeader");
         labelHeader.text = Globals.Instance.TrackCompleted ? "Track Completed - " : "Track Failed - " + Globals.Instance.CurrentMap.SongFile;
 
