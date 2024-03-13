@@ -1,5 +1,6 @@
 using UnityEngine;
 using RHTMGame.Utils;
+using UnityEngine.SceneManagement;
 
 public class StepCollision : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class StepCollision : MonoBehaviour
             }
             else
             {
-                Globals.Instance.QuitGame();
+                EndTrack(false);
             }           
         }
     }
@@ -56,8 +57,7 @@ public class StepCollision : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.Play("gameOver");
-            Globals.Instance.QuitGame();
+            EndTrack(false);
         }
     }
 
@@ -74,5 +74,21 @@ public class StepCollision : MonoBehaviour
             gameUIScript.UpdateAccuracy(Globals.Instance.PerformanceTracker.Accuracy);
             gameUIScript.UpdateScore(Globals.Instance.PerformanceTracker.Score.ToString());
         }
+
+        if (StepNumber == Globals.Instance.CurrentMap.Steps.Count - 1)
+        {
+            EndTrack(true);
+        }
+    }
+
+    void EndTrack(bool trackCompleted = false)
+    {
+        if (!trackCompleted)
+        {
+            AudioManager.Instance.Play("gameOver");
+        }
+
+        AudioManager.Instance.Stop(Globals.Instance.CurrentMap.SongFile);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

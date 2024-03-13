@@ -1,8 +1,6 @@
-using RHTMGame.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Timers;
-using System;
 
 public class GameUI : MonoBehaviour
 {
@@ -16,9 +14,6 @@ public class GameUI : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
         labelScore = root.Q<Label>("LabelScore");
         labelAccuracy = root.Q<Label>("LabelAccuracy");
-
-        labelScore.text = "Score: " + Globals.Instance.PerformanceTracker.Score;
-        labelAccuracy.text = "Accuracy: " + Globals.Instance.PerformanceTracker.Accuracy;
     }
 
     public void CreateComboLabel(string text)
@@ -42,11 +37,11 @@ public class GameUI : MonoBehaviour
 
     public void UpdateScore(string text)
     {
-        labelScore.text = "Score: " + text;
+        labelScore.text = text;
     }
 
     public void UpdateAccuracy(string text)
     {
-        labelAccuracy.text = "Accuracy: " + text;
+        labelAccuracy.text = text;
     }
 }
