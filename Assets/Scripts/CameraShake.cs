@@ -4,8 +4,6 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     private float defaultFoV = 77.3f;
-    private float zoomMultiplier = 2;
-    private float zoomDuration = 2;
     public Camera cam;
 
     public void Start()
@@ -13,13 +11,14 @@ public class CameraShake : MonoBehaviour
         cam.fieldOfView = defaultFoV;
     }
 
-    public IEnumerator Shake(float duration)
+    public IEnumerator Shake(float duration, float multiplier)
     {
         var elapsed = 0.0f;
 
         while(elapsed < duration)
         {
-            ZoomCamera(elapsed > duration / 2 ? defaultFoV : defaultFoV / zoomMultiplier);
+            var target = elapsed > duration / 2 ? defaultFoV : defaultFoV / multiplier;
+            ZoomCamera(target, multiplier);
 
             elapsed += Time.deltaTime;
 
@@ -27,9 +26,9 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    void ZoomCamera(float target)
+    void ZoomCamera(float target, float multiplier)
     {
-        float angle = Mathf.Abs((defaultFoV / zoomMultiplier) - defaultFoV);
-        cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, target, angle / zoomDuration * Time.deltaTime);
+        float angle = Mathf.Abs((defaultFoV / multiplier) - defaultFoV);
+        cam.fieldOfView = Mathf.MoveTowards(cam.fieldOfView, target, angle / Time.deltaTime);
     }
 }

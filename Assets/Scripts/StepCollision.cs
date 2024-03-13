@@ -67,7 +67,7 @@ public class StepCollision : MonoBehaviour
 
         if(GameObject.Find("Main Camera").TryGetComponent<CameraShake>(out var cameraShake))
         {
-            StartCoroutine(cameraShake.Shake(0.15f));
+            StartCoroutine(cameraShake.Shake(0.15f, 2f));
         }
         AudioManager.Instance.Play("stepHit");
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
