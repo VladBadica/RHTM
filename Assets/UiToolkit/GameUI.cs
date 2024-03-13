@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Timers;
 
 public class GameUI : MonoBehaviour
 {
+    float elapsedVisible = 0;
     VisualElement root;
     Label labelScore;
     Label labelAccuracy;
     Label labelCombo;
-    public VisualTreeAsset labelComboTemplate;
 
     private void OnEnable()
     {
@@ -18,19 +17,25 @@ public class GameUI : MonoBehaviour
         labelCombo = root.Q<Label>("LabelCombo");
     }
 
+    void Update()
+    {
+        if (elapsedVisible > 0)
+        {
+            elapsedVisible -= Time.deltaTime;
+        }
+
+        if(elapsedVisible <= 0)
+        {
+            labelCombo.style.display = DisplayStyle.None;
+        }
+    }
+
     public void UpdateLabelCombo(string text)
     {
         labelCombo.text = text;
-
-        var timer = new Timer(1000);
-        timer.Elapsed += (s, e) => {
-            Debug.Log("HIODE");
-            labelCombo.style.display = DisplayStyle.None;
-        };
-        timer.AutoReset = false;
-
         labelCombo.style.display = DisplayStyle.Flex;
-        timer.Start();
+
+        elapsedVisible = 1.5f;
     }
 
     public void UpdateScore(string text)
@@ -40,6 +45,6 @@ public class GameUI : MonoBehaviour
 
     public void UpdateAccuracy(string text)
     {
-        labelAccuracy.text = text;
+        labelAccuracy.text = text + "%";
     }
 }

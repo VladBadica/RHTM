@@ -1,5 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="LabelCombo" src="project://database/Assets/UiToolkit/LabelCombo.uxml?fileID=9197481963319205126&amp;guid=75995d69d80286749ba4aa882fc6d5e8&amp;type=3#LabelCombo" />
     <Style src="project://database/Assets/UiToolkit/Stylesheet.uss?fileID=7433441132597879392&amp;guid=033c8c38727493c43ae6931514ae43df&amp;type=3#Stylesheet" />
     <ui:VisualElement style="flex-grow: 1;">
         <ui:VisualElement name="Header" style="flex-grow: 0; padding-top: 20px; padding-right: 0; padding-bottom: 0; padding-left: 20px;">
@@ -7,8 +6,8 @@
             <ui:Label tabindex="-1" text="0%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelAccuracy" class="label" style="margin-top: 0;" />
         </ui:VisualElement>
         <ui:VisualElement name="Body" style="flex-grow: 1; align-items: center; justify-content: center;">
-            <ui:Instance template="LabelCombo" name="LabelCombo" />
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelCombo" class="label" style="transition-duration: 50ms; transition-property: display;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Footer" style="flex-grow: 0;" />
+        <ui:VisualElement name="Footer" style="flex-grow: 0; transition-property: display; transition-duration: 2s;" />
     </ui:VisualElement>
 </ui:UXML>
