@@ -38,7 +38,7 @@ public class MainMenuTrackball : MonoBehaviour
             direction = Direction.Left;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(Globals.Instance.Action1Key) || Input.GetKeyDown(Globals.Instance.Action2Key) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             if (playCollider.bounds.Intersects(trackballCollider.bounds))
             {

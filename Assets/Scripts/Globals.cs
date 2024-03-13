@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,6 +41,8 @@ namespace RHTMGame.Utils
         public List<Map> AllMaps { get; set; }
 
         public Map CurrentMap { get; set; }
+
+        public bool TrackCompleted = false;
 
         private PerformanceTracker _performanceTracker = null;
         public PerformanceTracker PerformanceTracker => _performanceTracker ??= new PerformanceTracker();
@@ -98,6 +100,29 @@ namespace RHTMGame.Utils
             set
             {
                 PlayerPrefs.SetFloat("GameVolume", value);
+            }
+        }
+
+        public KeyCode Action1Key
+        {
+            get
+            {
+                return PlayerPrefs.HasKey("Action1Key") ? (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Action1Key"), true) : KeyCode.Z;
+            }
+            set
+            {
+                PlayerPrefs.SetString("Action1Key", value.ToString());
+            }
+        }
+        public KeyCode Action2Key
+        {
+            get
+            {
+                return PlayerPrefs.HasKey("Action2Key") ? (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Action2Key"), true) : KeyCode.X;
+            }
+            set
+            {
+                PlayerPrefs.SetString("Action2Key", value.ToString());
             }
         }
     }

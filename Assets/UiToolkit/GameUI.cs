@@ -7,6 +7,7 @@ public class GameUI : MonoBehaviour
     VisualElement root;
     Label labelScore;
     Label labelAccuracy;
+    Label labelCombo;
     public VisualTreeAsset labelComboTemplate;
 
     private void OnEnable()
@@ -14,24 +15,21 @@ public class GameUI : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
         labelScore = root.Q<Label>("LabelScore");
         labelAccuracy = root.Q<Label>("LabelAccuracy");
+        labelCombo = root.Q<Label>("LabelCombo");
     }
 
-    public void CreateComboLabel(string text)
+    public void UpdateLabelCombo(string text)
     {
-        var container = labelComboTemplate.Instantiate();
-        container.Q<Label>().text = text;
+        labelCombo.text = text;
 
-        var timer = new Timer(3000);
-        timer.Elapsed += (s, e) => { 
-            root.Q("ContainerCombo").Remove(container); 
+        var timer = new Timer(1000);
+        timer.Elapsed += (s, e) => {
+            Debug.Log("HIODE");
+            labelCombo.style.display = DisplayStyle.None;
         };
         timer.AutoReset = false;
 
-        /*foreach(var child in root.Q("ContainerCombo").Children())
-        {
-           Handle opacity update for existing labels so they fade away in the screen 
-        }*/
-        root.Q("ContainerCombo").Add(container);
+        labelCombo.style.display = DisplayStyle.Flex;
         timer.Start();
     }
 

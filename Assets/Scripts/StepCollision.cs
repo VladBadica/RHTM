@@ -31,7 +31,7 @@ public class StepCollision : MonoBehaviour
             HandleExitCollision();
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(Globals.Instance.Action1Key) || Input.GetKeyDown(Globals.Instance.Action2Key))
         {
             if (StepCollider.bounds.Intersects(TrackballCollider.bounds))
             {
@@ -65,12 +65,17 @@ public class StepCollision : MonoBehaviour
     {
         wasHit = true;
 
+        if (GameObject.Find("Main Camera").TryGetComponent<CameraShake>(out var cameraShake))
+        {
+            StartCoroutine(cameraShake.Shake(0.15f, 1.1f));
+        }
+
         AudioManager.Instance.Play("stepHit");
         Globals.Instance.PerformanceTracker.AddHitAccuracy(TrackballCollider.bounds, StepCollider.bounds);
 
         if(GameObject.Find("UIDocument").TryGetComponent<GameUI>(out var gameUIScript)) 
         {
-            gameUIScript.CreateComboLabel(Globals.Instance.PerformanceTracker.GetLastHitInfoLabel());
+            gameUIScript.UpdateLabelCombo(Globals.Instance.PerformanceTracker.GetLastHitInfoLabel());
             gameUIScript.UpdateAccuracy(Globals.Instance.PerformanceTracker.Accuracy);
             gameUIScript.UpdateScore(Globals.Instance.PerformanceTracker.Score.ToString());
         }
@@ -88,6 +93,7 @@ public class StepCollision : MonoBehaviour
             AudioManager.Instance.Play("gameOver");
         }
 
+        Globals.Instance.TrackCompleted = trackCompleted;
         AudioManager.Instance.Stop(Globals.Instance.CurrentMap.SongFile);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
