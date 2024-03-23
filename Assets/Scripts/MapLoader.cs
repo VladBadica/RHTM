@@ -40,5 +40,9 @@ public class MapLoader : MonoBehaviour
     public void StartTrack()
     {
         AudioManager.Instance.Play(Globals.Instance.CurrentMap.SongFile);
+        if (GameObject.Find("Trackball").TryGetComponent<Trackball>(out var trackballScript))
+        {
+            trackballScript.enabled = true;
+        }
     }
 }
