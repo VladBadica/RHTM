@@ -11,14 +11,17 @@ public class MapLoader : MonoBehaviour
         Globals.Instance.PerformanceTracker.Reset();
         Globals.Instance.CurrentMap.Reset();
         Globals.Instance.TrackCompleted = false;
+        if(GameObject.Find("CountdownUIDocument").TryGetComponent<CountdownUI>(out var countDownScript))
+        {
+            countDownScript.StartCountdown();
+        }
 
         var stepLines = GameObject.FindGameObjectsWithTag("StepLine");
         foreach (var stepLine in stepLines)
         {
             Destroy(stepLine);
         }
-
-        AudioManager.Instance.Play(Globals.Instance.CurrentMap.SongFile);
+        
         for (var i = 0; i < Globals.Instance.CurrentMap.Steps.Count; i++)
         {
             var step = Globals.Instance.CurrentMap.Steps[i];
@@ -32,5 +35,10 @@ public class MapLoader : MonoBehaviour
                 }
             }
         }           
+    }
+
+    public void StartTrack()
+    {
+        AudioManager.Instance.Play(Globals.Instance.CurrentMap.SongFile);
     }
 }
