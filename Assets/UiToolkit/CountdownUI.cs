@@ -22,7 +22,7 @@ public class CountdownUI : MonoBehaviour
         if (countdownTimer == 0)
         {
             root.Q<VisualElement>("RootContainer").style.display = DisplayStyle.Flex;
-            countdownTimer = 3;
+            countdownTimer = 1;
             countDownLabel.text = countdownTimer.ToString();
         }
     }

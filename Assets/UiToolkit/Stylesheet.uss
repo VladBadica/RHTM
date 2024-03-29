@@ -11,7 +11,7 @@
     margin-top: 5%;
 }
 
-.header.headerLabel {
+.header > .headerLabel {
     font-size: 48px;
     -unity-font-style: bold;
     color: rgb(255, 255, 255);

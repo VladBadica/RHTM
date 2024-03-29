@@ -5,8 +5,9 @@ public class Trackball : MonoBehaviour
 {
     public float horizontalForce;
 
-    void Start()
+    private void Awake()
     {
+
         Globals.Instance.TrackballDirection = Direction.Left;
     }
 
