@@ -42,7 +42,7 @@ public class MainMenuTrackball : MonoBehaviour
         {
             if (playCollider.bounds.Intersects(trackballCollider.bounds))
             {
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("MapSelection");
                 Globals.Instance.CurrentMap = Globals.Instance.AllMaps[0];
                 AudioManager.Instance.Stop("mainMenu");
             }

@@ -13,6 +13,9 @@ namespace RHTMGame.Utils
 
     public class Globals
     {
+        //https://danqzq.itch.io/leaderboard-creator
+        public string PublicLeaderboardKey = "31c089b4f911a06eb6b5a91e3d72af80758d47861172fc3fe8d0a9a1046659fe";
+
         private static Globals _globals = null;
         public static Globals Instance => _globals ??= new Globals();
 

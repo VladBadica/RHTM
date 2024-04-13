@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UiToolkit/Stylesheet.uss?fileID=7433441132597879392&amp;guid=033c8c38727493c43ae6931514ae43df&amp;type=3#Stylesheet" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="Header" class="header" style="flex-grow: 0;">
+            <ui:Label tabindex="-1" text="Select Map" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelHeader" class="headerLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Body" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="ContainerMapList" style="flex-grow: 1; flex-direction: row; justify-content: flex-start; align-items: flex-start; align-self: auto; margin-top: 20px;">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonMap1" style="align-items: center; justify-content: center; align-self: auto; width: 50%; height: auto; margin-left: 19px;">
+                    <ui:Label tabindex="-1" text="My Song Here" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelMap1Song" style="font-size: 18px;" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:VisualElement name="Leaderboard" style="flex-grow: 1; align-items: stretch;">
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelRank1" class="label" />
+                <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelRank2" class="label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" style="flex-grow: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

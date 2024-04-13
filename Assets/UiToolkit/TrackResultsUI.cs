@@ -1,4 +1,5 @@
-﻿using RHTMGame.Utils;
+﻿using Dan.Main;
+using RHTMGame.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -7,6 +8,7 @@ public class TrackResultsUI : MonoBehaviour
 {
     VisualElement root;
     UIDocument trackResultsUI;
+
     private void OnEnable()
     {
         trackResultsUI = GetComponent<UIDocument>();
@@ -29,11 +31,17 @@ public class TrackResultsUI : MonoBehaviour
 
         var labelAccuracy = root.Q<Label>("LabelAccuracy");
         labelAccuracy.text = $"Accuracy: {Globals.Instance.PerformanceTracker.Accuracy}%";
+
+        var buttonSubmit = root.Q<Button>("ButtonSubmit");
+        buttonSubmit.clicked += () =>
+        {
+            LeaderboardCreator.UploadNewEntry(Globals.Instance.PublicLeaderboardKey, "Vlad", 123);
+        };
     }
 
     void GoBack()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MapSelection");
     }
 
     void Retry()
