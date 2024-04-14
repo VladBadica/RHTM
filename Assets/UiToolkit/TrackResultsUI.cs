@@ -33,10 +33,14 @@ public class TrackResultsUI : MonoBehaviour
         labelAccuracy.text = $"Accuracy: {Globals.Instance.PerformanceTracker.Accuracy}%";
 
         var buttonSubmit = root.Q<Button>("ButtonSubmit");
-        buttonSubmit.clicked += () =>
-        {
-            LeaderboardCreator.UploadNewEntry(Globals.Instance.PublicLeaderboardKey, "Vlad", 123);
-        };
+        buttonSubmit.clicked += () => SubmitScore();
+    }
+
+    void SubmitScore()
+    {
+        var inputName = root.Q<TextField>("TextPlayerName");
+
+        LeaderboardCreator.UploadNewEntry(Globals.Instance.PublicLeaderboardKey, inputName.value, Globals.Instance.PerformanceTracker.Score);
     }
 
     void GoBack()

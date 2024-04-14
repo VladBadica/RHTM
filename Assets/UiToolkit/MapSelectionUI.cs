@@ -40,9 +40,8 @@ public class MapSelectionUI : MonoBehaviour
     {
         LeaderboardCreator.GetLeaderboard(Globals.Instance.PublicLeaderboardKey, (response) =>
         {
-            Debug.Log(response[0]);
-            labelRank1.text = response[0].Username;
-            labelRank2.text = response[1].Username;
+            labelRank1.text = $"{response[0].Username}: {response[0].Score}";
+            labelRank2.text = $"{response[1].Username}: {response[1].Score}";
         });
     }
 
