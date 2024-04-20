@@ -27,12 +27,20 @@ public class MapSelectionUI : MonoBehaviour
         buttonMap1 = root.Q<Button>("ButtonMap1");
         buttonMap1.clicked += () => SelectMap();
 
+        var buttonBack = root.Q<Button>("ButtonBack");
+        buttonBack.clicked += () => GoBack();
+
         labelRank1 = root.Q<Label>("LabelRank1");
         labelRank2 = root.Q<Label>("LabelRank2");
         labelRank3 = root.Q<Label>("LabelRank3");
         labelRank4 = root.Q<Label>("LabelRank4");
         labelRank5 = root.Q<Label>("LabelRank5");
         GetLeaderboard();
+    }
+
+    private void GoBack()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void SelectMap()

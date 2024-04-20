@@ -19,7 +19,7 @@
                 <ui:Button text="Change" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonAction2" class="button" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="Footer" style="align-self: auto; justify-content: flex-start; align-items: flex-end; padding-right: 40px; padding-bottom: 40px; padding-top: 15px; margin-bottom: 0;">
+        <ui:VisualElement name="Footer" class="footer" style="align-self: auto; justify-content: flex-start; align-items: flex-end; background-color: rgba(86, 90, 99, 0);">
             <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonBack" class="button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(149, 149, 149); border-right-color: rgb(149, 149, 149); border-top-color: rgb(149, 149, 149); border-bottom-color: rgb(149, 149, 149); background-color: rgba(188, 188, 188, 0); -unity-font-style: bold; font-size: 20px;" />
         </ui:VisualElement>
     </ui:VisualElement>
